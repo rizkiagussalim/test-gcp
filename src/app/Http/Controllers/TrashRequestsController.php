@@ -105,10 +105,10 @@ class TrashRequestsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        dd($request->query('user_id'));
+        dd('ada',$request->query('user_id'));
         if (isset($_GET['id'])) {
             $data = TrashRequests::with('user', 'driver')->where('id', $_GET['id'])->first();
 
