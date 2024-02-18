@@ -108,7 +108,7 @@ class TrashRequestsController extends Controller
     public function index(Request $request)
     {
 
-        dd('ada',$request->query('user_id'));
+        dd('ada',$_GET,$request->query(),$request->query('user_id'));
         if (isset($_GET['id'])) {
             $data = TrashRequests::with('user', 'driver')->where('id', $_GET['id'])->first();
 
