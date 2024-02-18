@@ -116,7 +116,7 @@ class TrashRequestsController extends Controller
                 //throw $th;
             }
 
-
+// sds
             // if ($data->proof_payment != null) {
             //     $data['proof_payment_url'] = env('APP_URL') . '/api/getFile/ProofPayment/' . $data->proof_payment;
             // }
