@@ -116,7 +116,6 @@ class TrashRequestsController extends Controller
                 //throw $th;
             }
 
-// sds
             // if ($data->proof_payment != null) {
             //     $data['proof_payment_url'] = env('APP_URL') . '/api/getFile/ProofPayment/' . $data->proof_payment;
             // }
@@ -142,6 +141,8 @@ class TrashRequestsController extends Controller
 
             if (isset($_GET['user_id'])) {
                 $data = TrashRequests::with('user', 'driver')->where('user_id', $_GET['user_id']);
+                return response()->json($data->get(), 404);
+
             }
             if (isset($_GET['driver_id'])) {
                 $data = $data->where('driver_id', $_GET['driver_id']);
