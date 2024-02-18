@@ -21,12 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone',
-        'address',
-        'avatar',
-        'role',
-        'status',
-        'balance_coin'
     ];
 
     /**

@@ -17,13 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->string('avatar')->nullable();
-            $table->enum('role', ['USER', 'ADMIN','DRIVER','RESTAURANT_OWNER','WASTE_COLLECTOR'])->default('USER');
-            $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->integer('balance_coin')->default(0);
-
             $table->rememberToken();
             $table->timestamps();
         });
