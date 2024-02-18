@@ -107,8 +107,6 @@ class TrashRequestsController extends Controller
      */
     public function index()
     {
-        return response()->json(['told'], 404);
-
         if (isset($_GET['id'])) {
             $data = TrashRequests::with('user', 'driver')->where('id', $_GET['id'])->first();
 
