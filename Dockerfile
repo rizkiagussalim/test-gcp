@@ -1,20 +1,19 @@
 FROM php:8.2-fpm
 
-# RUN apk add --no-cache nginx wget
+RUN apt-get update && apt-get install -y \
+    git \
+    libzip-dev \
+    zip \
+    unzip \ 
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 RUN apt-get update && apt-get install -y nginx wget
-
-# install ext gd and 
-# RUN apk add --no-cache gd \ 
-
-RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd
-
-RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN mkdir -p /run/nginx
 
