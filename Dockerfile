@@ -11,7 +11,12 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev 
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN docker-php-ext-install pdo_mysql exif pcntl bcmath gd zip
+
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
+# RUN docker-php-ext-install pdo_mysql exif pcntl bcmath gd zip
 
 RUN apt-get update && apt-get install -y nginx wget
 
