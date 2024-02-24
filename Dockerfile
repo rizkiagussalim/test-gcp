@@ -16,19 +16,13 @@ RUN echo "\e[1;33mInstall important libraries\e[0m"
     RUN apt-get -y install --fix-missing \
     apt-utils \
     build-essential \
-    git \
-    curl \
     libcurl4 \
     libcurl4-openssl-dev \
     zlib1g-dev \
-    libzip-dev \
-    zip \
     libbz2-dev \
     locales \
     libmcrypt-dev \
-    libicu-dev \
-    libonig-dev \
-    libxml2-dev
+    libicu-dev
 
 RUN echo "\e[1;33mInstall important docker dependencies\e[0m"
 RUN docker-php-ext-install \
@@ -42,9 +36,9 @@ RUN docker-php-ext-install \
     soap \
     pcntl \
     mbstring \
-    tokenizer \
     bz2 \
     zip \
+    gd \
     intl
 
 RUN apt-get install -y libpq-dev \
@@ -53,7 +47,7 @@ RUN apt-get install -y libpq-dev \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN docker-php-ext-install pdo_mysql exif pcntl bcmath gd zip
+# RUN docker-php-ext-install pdo_mysql exif pcntl bcmath gd zip
 
 RUN apt-get update && apt-get install -y nginx wget
 
